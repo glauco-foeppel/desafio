@@ -17,7 +17,7 @@ class Admin::UsersController < ApplicationController
     respond_to do |format|
       @user = User.find_by_id(params[:id])
       if @user.update(user_params)
-        format.html { redirect_to [:admin, @user], notice: 'User was successfully updated.' }
+        format.html { redirect_to [:admin, @user], notice: 'Usuario atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -30,7 +30,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to [:admin, @user], notice: 'User was successfully destroyed.' }
+      format.html { redirect_to action: 'index', notice: 'Usuario deletado com sucesso.' }
       format.json { head :no_content }
     end
   end
