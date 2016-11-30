@@ -2,10 +2,14 @@ class Admin::UsersController < ApplicationController
   #before_action :authenticate_user!
 
   def index
-    @user = User.find_by_id(current_user.id)
+    @users = User.all
   end
 
   def edit
+    @user = User.find_by_id(params[:id])
+  end
+
+  def show
     @user = User.find_by_id(params[:id])
   end
 
@@ -13,12 +17,21 @@ class Admin::UsersController < ApplicationController
     respond_to do |format|
       @user = User.find_by_id(params[:id])
       if @user.update(user_params)
-        format.html { redirect_to users_path, notice: 'Seu perfil foi atualizado com sucesso.' }
+        format.html { redirect_to [:admin, @user], notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    @user = User.find_by_id(params[:id])
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to [:admin, @user], notice: 'User was successfully destroyed.' }
+      format.json { head :no_content }
     end
   end
 
