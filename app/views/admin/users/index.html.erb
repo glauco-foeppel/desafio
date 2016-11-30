@@ -3,5 +3,8 @@
 <p>
 <%= link_to "Sign out", destroy_admin_session_path, :method => :delete %>
 </p>
+<p>
+<%= link_to "Listar deletados", deleted_admin_users_path %>
+</p>
 
 <%= render "list_of_users" %>

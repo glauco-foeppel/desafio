@@ -39,6 +39,11 @@ class Admin::UsersController < ApplicationController
     @users = User.where("name LIKE ?", "%#{params[:name]}%")
   end
 
+  def deleted
+    @users_deleted = User.only_deleted
+  end
+
+
   private
   def user_params
       params.require(:user).permit(:name, :email, :password,:password_confirmation)
