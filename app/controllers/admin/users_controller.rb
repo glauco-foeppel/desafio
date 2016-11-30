@@ -35,6 +35,10 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def search
+    @users = User.where("name LIKE ?", "%#{params[:name]}%")
+  end
+
   private
   def user_params
       params.require(:user).permit(:name, :email, :password,:password_confirmation)

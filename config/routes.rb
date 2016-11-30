@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :edit, :update]
 
   namespace :admin do
-    resources :users, only: [:index, :show, :edit, :updste, :destroy]
+    resources :users do
+      collection do
+        post 'search'
+      end
+    end
   end
 
   devise_for :users
