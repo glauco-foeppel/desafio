@@ -1,7 +1,7 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>Editar dados do Usuário</h1>
 
 <%= form_for [:admin, @user] do |f| %>
+
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -14,16 +14,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Nome" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br>
-    <%= f.email_field :email %>
+    <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Editar", class: "btn btn-primary" %>
   </div>
 <% end %>

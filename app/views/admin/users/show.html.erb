@@ -1,3 +1,5 @@
+<h1>Dados do Usuário</h1>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -9,5 +11,5 @@
   <%= @user.email %>
 </p>
 
-<%= link_to 'Edit', edit_admin_user_path(@user) %> |
-<%= link_to 'Back', admin_users_path %>
+<%= link_to 'Editar', edit_admin_user_path(@user), class: "btn btn-primary" %>
+<%= link_to 'Voltar', admin_users_path, class: "btn btn-success" %>
