@@ -1,4 +1,4 @@
-<h1>Users#edit</h1>
+<h1>Editar Meu Perfil</h1>
 
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
@@ -13,16 +13,16 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Nome" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br>
-    <%= f.email_field :email %>
+    <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Editar", class: "btn btn-primary" %>
   </div>
 <% end %>
