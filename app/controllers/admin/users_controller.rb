@@ -12,6 +12,9 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
+    if params[:id] == "search"
+      redirect_to admin_users_path
+    end
     @user = User.find_by_id(params[:id])
   end
 
@@ -38,7 +41,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def search
-    @users = User.where("name LIKE ?", "%#{params[:name]}%")
+    @users = User.where("name ilike ?", "%#{params[:name]}%")
   end
 
   def deleted
