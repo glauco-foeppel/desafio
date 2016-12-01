@@ -5,4 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   acts_as_paranoid
+
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true
+
 end
