@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :edit, :update]
 
   namespace :admin do
+    get '/', to: "users#index"
     resources :users do
       collection do
         post 'search'
